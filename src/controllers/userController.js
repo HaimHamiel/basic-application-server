@@ -7,8 +7,6 @@ const {
   addUser,
 } = require("../services/userService");
 
-const User = require('../models/userModel');
-
 // @desc Register a new user
 // @route /api/users
 // @access Public
@@ -71,7 +69,7 @@ const loginUser = asyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        token: generateToken(User._id),
+        token: generateToken(user._id),
       });
     } else {
       return res.status(401).json({ message: "Invalid credentials." });
